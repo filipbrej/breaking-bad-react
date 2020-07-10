@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css';
-
+import GlobalStyle from './GlobalStyles';
+import styled from 'styled-components';
 import Header from './components/UI/Header';
 import Search from './components/UI/Search';
 import CharacterGrid from './components/characters/CharacterGrid';
+const Wrapper = styled.div`
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+`;
 
 const App = () => {
     const [items, setItems] = useState([]);
@@ -22,11 +27,12 @@ const App = () => {
     }, [query]);
 
     return (
-        <div className='container'>
+        <Wrapper>
+            <GlobalStyle />
             <Header />
             <Search getQuery={(q) => setQuery(q)} />
             <CharacterGrid isLoading={isLoading} items={items} />
-        </div>
+        </Wrapper>
     );
 };
 

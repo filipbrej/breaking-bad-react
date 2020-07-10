@@ -1,4 +1,20 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+// Search bar styling
+const Wrapper = styled.section`
+    height: 100px;
+`;
+
+const SearchBar = styled.input`
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;
+`;
 
 const Search = ({ getQuery }) => {
     const [text, setText] = useState('');
@@ -8,9 +24,9 @@ const Search = ({ getQuery }) => {
         getQuery(q);
     };
     return (
-        <section className='search'>
-            <form action=''>
-                <input
+        <Wrapper>
+            <form>
+                <SearchBar
                     type='text'
                     className='form-control'
                     placeholder='Search characters'
@@ -19,7 +35,7 @@ const Search = ({ getQuery }) => {
                     onChange={(e) => onChange(e.target.value)}
                 />
             </form>
-        </section>
+        </Wrapper>
     );
 };
 
